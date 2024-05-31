@@ -23,5 +23,8 @@ const getQuestionAndAnswer = () => {
 }
 
 export const game4 = () => {
-    (description, getQuestionAndAnswer);
+    return {
+        description,
+        getQuestionAndAnswer
+    };
 };

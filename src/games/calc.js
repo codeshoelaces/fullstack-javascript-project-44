@@ -40,5 +40,8 @@ const getQuestionAndAnswer = () => {
 }
 
 export const game2 = () => {
-    (description, getQuestionAndAnswer);
+    return {
+        description,
+        getQuestionAndAnswer
+    };
 };

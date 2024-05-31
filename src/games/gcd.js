@@ -22,5 +22,8 @@ const getQuestionAndAnswer = () => {
 }
 
 export const game3 = () => {
-    (description, getQuestionAndAnswer);
+    return {
+        description,
+        getQuestionAndAnswer
+    };
 };

@@ -19,5 +19,8 @@ const getQuestionAndAnswer = () => {
 }
 
 export const game5 = () => {
-    (description, getQuestionAndAnswer);
+    return {
+        description,
+        getQuestionAndAnswer
+    };
 };

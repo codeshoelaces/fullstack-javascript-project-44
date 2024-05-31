@@ -1,8 +1,10 @@
-import { question } from "readline-sync";
+import { question } from 'readline-sync';
 
-export let username: string;
+export let username;
 
-export const greeting = (): void => {
-    username = question("May I have your name? ");
+const greeting = () => {
+    username = question('May I have your name? ');
     console.log(`Hello, ${username}!`);
-};
+}
+
+greeting();

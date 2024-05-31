@@ -1,4 +1,4 @@
-import readlineSync from 'readline-sync';
+import { question } from "readline-sync";
 
 const roundsCount = 3;
 
@@ -11,19 +11,19 @@ export default (description, getQuestionAndAnswer) => {
     let correctAnswersCount = 0;
     let currentQuestionIndex = 0;
 
-    let answer;
-
     for (let i = 0; i < roundsCount; i++) {
         const [question, correctAnswer] = getQuestionAndAnswer();
         console.log(`Question: ${question}`);
-        answer = readlineSync.question(`Your answer: `);
+        const answer = readlineSync.question(`Your answer: `);
+
+        if (answer === correctAnswer) {
+            console.log('Correct!');
+            correctAnswersCount++;
+        } else {
+            console.log(`${answer} is wrong answer ;(. Correct answer was ${correctAnswer}.`);
+        }
     }
 
-    if (answer === correctAnswer) {
-        console.log('Correct!');
-    } else {
-        console.log(`${answer} is wrong answer ;(. Correct answer was ${correctAnswer}.`);
-        console.log(`Let's try again, ${name}!`);
-    }
+    console.log(`You got ${correctAnswersCount} out of ${roundsCount} correct answers.`);
     console.log(`Congratulations ${name}!`);
 }

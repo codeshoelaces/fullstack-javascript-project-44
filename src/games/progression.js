@@ -1,6 +1,9 @@
-const description = 'What number is missing in the progression?';
+import description from '../index.js';
+import getQuestionAndAnswer from '../index.js';
 
-const getQuestionAndAnswer = () => {
+const description4 = 'What number is missing in the progression?';
+
+const getQuestionAndAnswer4 = () => {
     const progressLength = Math.floor(Math.random() * 10) + 5;
     const firstTerm = 1;
     const commonDifference = Math.floor(Math.random() * 10) + 1;
@@ -24,7 +27,7 @@ const getQuestionAndAnswer = () => {
 
 export const game4 = () => {
     return {
-        description,
-        getQuestionAndAnswer
+        description4,
+        getQuestionAndAnswer4
     };
 };

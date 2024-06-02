@@ -1,4 +1,7 @@
-const description = 'Find the greatest common divisor of given numbers.';
+import description from '../index.js';
+import getQuestionAndAnswer from '../index.js';
+
+const description3 = 'Find the greatest common divisor of given numbers.';
 
 function gcd(a, b) {
     while (b !== 0) {
@@ -16,14 +19,14 @@ function generateQuestion() {
     return [a, b, gcdValue];
 }
 
-const getQuestionAndAnswer = () => {
+const getQuestionAndAnswer3 = () => {
     const [a, b, gcdValue] = generateQuestion();
     return [a + ' ' + b + '?', gcdValue];
 }
 
 export const game3 = () => {
     return {
-        description,
-        getQuestionAndAnswer
+        description3,
+        getQuestionAndAnswer3
     };
 };

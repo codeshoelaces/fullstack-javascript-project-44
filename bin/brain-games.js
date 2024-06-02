@@ -11,3 +11,7 @@ game2();
 game3();
 game4();
 game5();
+
+
+import hello from '../src/cli.js';
+hello();

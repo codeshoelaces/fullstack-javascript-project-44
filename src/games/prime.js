@@ -1,4 +1,7 @@
-const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+import description from '../index.js';
+import getQuestionAndAnswer from '../index.js';
+
+const description5 = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 function isPrime(number) {
     if (number <= 1) {
@@ -12,7 +15,7 @@ function isPrime(number) {
     return true;
 }
 
-const getQuestionAndAnswer = () => {
+const getQuestionAndAnswer5 = () => {
     const number = Math.floor(Math.random() * 100) + 1;
     const isPrimeStatus = isPrime(number);
     return [number, isPrimeStatus ? 'yes' : 'no'];
@@ -20,7 +23,7 @@ const getQuestionAndAnswer = () => {
 
 export const game5 = () => {
     return {
-        description,
-        getQuestionAndAnswer
+        description5,
+        getQuestionAndAnswer5
     };
 };

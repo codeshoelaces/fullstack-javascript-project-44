@@ -1,4 +1,4 @@
-const description = 'What is the result of the expression?';
+import { getQuestionAndAnswer } from '../index.js';
 
 const operators = ['+', '-', '*'];
 
@@ -14,7 +14,7 @@ function multiply(a, b) {
     return a * b;
 }
 
-const getQuestionAndAnswer = () => {
+const getRandomQuestionAndAnswer = () => {
   const operand1 = Math.floor(Math.random() * 10);
   const operatorIndex = Math.floor(Math.random() * operators.length);
   const operator = operators[operatorIndex];
@@ -41,7 +41,6 @@ const getQuestionAndAnswer = () => {
 
 export const game2 = () => {
     return {
-        description,
-        getQuestionAndAnswer
+        getQuestionAndAnswer: getRandomQuestionAndAnswer
     };
 };

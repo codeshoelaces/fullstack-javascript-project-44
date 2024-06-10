@@ -1,29 +1,34 @@
-import description from '../index.js';
-import getQuestionAndAnswer from '../index.js';
+import game from '../index.js';
 
-const description5 = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const description = 'Answer "yes" if given number is prime. Otherwise answer "no"';
 
 function isPrime(number) {
-    if (number <= 1) {
-        return false;
+  if (number <= 1) {
+    return false;
+  }
+  for (let i = 2; i <= Math.sqrt(number); i++) {
+    if (number % i === 0) {
+      return false;
     }
-    for (let i = 2; i <= Math.sqrt(number); i++) {
-        if (number % i === 0) {
-            return false;
-        }
-    }
-    return true;
+  }
+  return true;
 }
 
-const getQuestionAndAnswer5 = () => {
+const generateQuestion = () => {
     const number = Math.floor(Math.random() * 100) + 1;
     const isPrimeStatus = isPrime(number);
-    return [number, isPrimeStatus ? 'yes' : 'no'];
-}
+    const question = `${number}`;
+    return { question, isPrimeStatus };
+  };
 
-export const game5 = () => {
-    return {
-        description5,
-        getQuestionAndAnswer5
-    };
+  const getQuestionAndAnswer = () => {
+    const generated = generateQuestion();
+    const question = generated.question;
+    const correctAnswer = generated.isPrimeStatus ? 'yes' : 'no';
+  
+    return { question, correctAnswer };
+  };
+
+export default () => {
+  game(description, getQuestionAndAnswer);
 };

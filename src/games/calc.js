@@ -1,46 +1,48 @@
-import { getQuestionAndAnswer } from '../index.js';
+import game from '../index.js';
 
-const operators = ['+', '-', '*'];
+const description = 'What is the result of the expression?';
 
-function add(a, b) {
-    return a + b;
-}
+const randomInteger = (min, max) => {
+  let rand = min + Math.random() * (max + 1 - min);
+  return Math.floor(rand);
+};
 
-function subtract(a, b) {
-    return a - b;
-}
+const getRandomOperation = () => {
+  return ['+', '-', '*'][Math.floor(Math.random() * 3)];
+};
 
-function multiply(a, b) {
-    return a * b;
-}
+const generateQuestion = () => {
+  let num1 = randomInteger(1, 10);
+  let num2 = randomInteger(1, 10);
+  const operation = getRandomOperation();
 
-const getRandomQuestionAndAnswer = () => {
-  const operand1 = Math.floor(Math.random() * 10);
-  const operatorIndex = Math.floor(Math.random() * operators.length);
-  const operator = operators[operatorIndex];
-  const operand2 = Math.floor(Math.random() * 10);
-
-  let correctAnswer;
-  switch (operator) {
-      case '+':
-          correctAnswer = add(operand1, operand2);
-          break;
-      case '-':
-          correctAnswer = subtract(operand1, operand2);
-          break;
-      case '*':
-          correctAnswer = multiply(operand1, operand2);
-          break;
-      default:
-          correctAnswer = null;
-          break;
+  switch (operation) {
+    case '+':
+      return `${num1} + ${num2}`;
+    case '-':
+      return `${num1} - ${num2}`;
+    case '*':
+      return `${num1} * ${num2}`;
   }
+};
 
-  return [`${operand1} ${operator} ${operand2}`, correctAnswer];
-}
+const getQuestionAndAnswer = () => {
+  const question = generateQuestion();
+  const [num1Str, operation, num2Str] = question.split(' ');
 
-export const game2 = () => {
-    return {
-        getQuestionAndAnswer: getRandomQuestionAndAnswer
-    };
+  let num1 = Number(num1Str);
+  let num2 = Number(num2Str);
+
+  switch (operation) {
+    case '+':
+      return { question, correctAnswer: (num1 + num2).toFixed(0) };
+    case '-':
+      return { question, correctAnswer: (num1 - num2).toFixed(0) };
+    case '*':
+      return { question, correctAnswer: (num1 * num2).toFixed(0) };
+  }
+};
+
+export default () => {
+  game(description, getQuestionAndAnswer);
 };

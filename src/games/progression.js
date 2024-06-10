@@ -1,33 +1,39 @@
-import description from '../index.js';
-import getQuestionAndAnswer from '../index.js';
+import game from '../index.js';
 
-const description4 = 'What number is missing in the progression?';
+const description = 'What number is missing in the progression?';
 
-const getQuestionAndAnswer4 = () => {
-    const progressLength = Math.floor(Math.random() * 10) + 5;
-    const firstTerm = 1;
-    const commonDifference = Math.floor(Math.random() * 10) + 1;
-    let hiddenTermPosition = Math.floor(Math.random() * (progressLength - 1));
-
+const generateQuestion = () => {
     let question = '';
     let answer = '';
 
+    const progressLength = Math.floor(Math.random() * 6) + 5;
+    const firstTerm = Math.floor(Math.random() * 9) + 1;
+    const commonDifference = Math.floor(Math.random() * 10) + 1;
+    let hiddenTermPosition = Math.floor(Math.random() * progressLength);
+
+    if (hiddenTermPosition === 0) {
+        question += `${firstTerm}`;
+    }
+
     for (let i = 0; i < progressLength; i++) {
         if (i === hiddenTermPosition) {
-            question += '.. ';
+            question += '..';
         } else {
-            question += (firstTerm + i * commonDifference) + ' ';
+            question += `${firstTerm + i * commonDifference} `;
         }
     }
 
     answer = firstTerm + hiddenTermPosition * commonDifference;
 
-    return [question, answer];
-}
+    return { question, answer };
+};
 
-export const game4 = () => {
-    return {
-        description4,
-        getQuestionAndAnswer4
-    };
+const getQuestionAndAnswer = () => {
+    const { question, answer } = generateQuestion();
+    const correctAnswer = String(answer);
+    return { question, correctAnswer };
+};
+
+export default () => {
+    game(description, getQuestionAndAnswer);
 };

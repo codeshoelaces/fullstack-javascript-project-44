@@ -1,32 +1,27 @@
-import description from '../index.js';
-import getQuestionAndAnswer from '../index.js';
+import game from '../index.js';
 
-const description3 = 'Find the greatest common divisor of given numbers.';
+const description = 'Find the greatest common divisor of given numbers.';
 
-function gcd(a, b) {
-    while (b !== 0) {
-        const temp = b;
-        b = a % b;
-        a = temp;
+const getGCD = (a, b) => {
+    if (b === 0) {
+        return a;
     }
-    return a;
-}
+    return getGCD(b, a % b);
+};
 
-function generateQuestion() {
-    const a = Math.floor(Math.random() * 10);
-    const b = Math.floor(Math.random() * 10);
-    const gcdValue = gcd(a, b);
-    return [a, b, gcdValue];
-}
+const generateQuestion = () => {
+    const num1 = Math.floor(Math.random() * 10) + 1;
+    const num2 = Math.floor(Math.random() * 10) + 1;
+    const gcdValue = getGCD(num1, num2);
+    return [num1, num2, gcdValue];
+};
 
-const getQuestionAndAnswer3 = () => {
-    const [a, b, gcdValue] = generateQuestion();
-    return [a + ' ' + b + '?', gcdValue];
-}
+const getQuestionAndAnswer = () => {
+    const question = generateQuestion();
+    const [num1, num2, gcdValue] = question;
+    return { question: `${num1} ${num2}`, correctAnswer: gcdValue.toString() };
+};
 
-export const game3 = () => {
-    return {
-        description3,
-        getQuestionAndAnswer3
-    };
+export default () => {
+    game(description, getQuestionAndAnswer);
 };

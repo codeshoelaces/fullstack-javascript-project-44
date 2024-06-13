@@ -2,8 +2,7 @@
   "name": "@hexlet/code",
   "type": "module",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/codeshoelaces/fullstack-javascript-project-44/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/codeshoelaces/fullstack-javascript-project-44/actions)",
-  "main": "index.js",
+  "description": "Simple console games written in JavaScript",
   "bin": {
     "brain-games": "bin/brain-games.js",
     "brain-even": "bin/brain-even.js",
@@ -13,10 +12,8 @@
     "brain-prime": "bin/brain-prime.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "codeshoelaces",
   "devDependencies": {
     "eslint": "^9.1.1",
     "eslint-config-airbnb-base": "^15.0.0",

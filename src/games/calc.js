@@ -1,19 +1,16 @@
 import game from '../index.js';
+import getRandomInRange from '../utils.js';
+
 
 const description = 'What is the result of the expression?';
-
-const randomInteger = (min, max) => {
-  let rand = min + Math.random() * (max + 1 - min);
-  return Math.floor(rand);
-};
 
 const getRandomOperation = () => {
   return ['+', '-', '*'][Math.floor(Math.random() * 3)];
 };
 
 const generateQuestion = () => {
-  let num1 = randomInteger(1, 10);
-  let num2 = randomInteger(1, 10);
+  let num1 = getRandomInRange(1, 100);
+  let num2 = getRandomInRange(1, 100);
   const operation = getRandomOperation();
 
   switch (operation) {

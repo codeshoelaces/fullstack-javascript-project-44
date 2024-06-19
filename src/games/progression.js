@@ -1,39 +1,29 @@
 import game from '../index.js';
+import getRandomInRange from '../utils.js';
 
 const description = 'What number is missing in the progression?';
 
 const generateQuestion = () => {
-    let question = '';
-    let answer = '';
+  const progressLength = getRandomInRange(5, 10);
+  const firstTerm = getRandomInRange(1, 9);
+  const commonDifference = getRandomInRange(1, 10);
+  const hiddenTermPosition = getRandomInRange(0, progressLength - 1);
 
-    const progressLength = Math.floor(Math.random() * 6) + 5;
-    const firstTerm = Math.floor(Math.random() * 9) + 1;
-    const commonDifference = Math.floor(Math.random() * 10) + 1;
-    let hiddenTermPosition = Math.floor(Math.random() * progressLength);
+  let question = '';
+  let answer = firstTerm + hiddenTermPosition * commonDifference;
 
-    if (hiddenTermPosition === 0) {
-        question += `${firstTerm}`;
-    }
+  for (let i = 0; i < progressLength; i++) {
+    question += i === hiddenTermPosition ? '.. ' : `${firstTerm + i * commonDifference} `;
+  }
 
-    for (let i = 0; i < progressLength; i++) {
-        if (i === hiddenTermPosition) {
-            question += '..';
-        } else {
-            question += `${firstTerm + i * commonDifference} `;
-        }
-    }
-
-    answer = firstTerm + hiddenTermPosition * commonDifference;
-
-    return { question, answer };
+  return { question, answer };
 };
 
 const getQuestionAndAnswer = () => {
-    const { question, answer } = generateQuestion();
-    const correctAnswer = String(answer);
-    return { question, correctAnswer };
+  const { question, answer } = generateQuestion();
+  return { question, correctAnswer: String(answer) };
 };
 
 export default () => {
-    game(description, getQuestionAndAnswer);
+  game(description, getQuestionAndAnswer);
 };

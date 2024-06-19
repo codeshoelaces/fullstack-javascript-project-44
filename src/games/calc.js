@@ -1,7 +1,6 @@
 import game from '../index.js';
 import getRandomInRange from '../utils.js';
 
-
 const description = 'What is the result of the expression?';
 
 const getRandomOperation = () => {

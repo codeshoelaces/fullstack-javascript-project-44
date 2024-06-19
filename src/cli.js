@@ -6,4 +6,5 @@ const makeWelcome = () => {
     console.log(`Hello, ${name}`);
     return name;
 };
+
 export default makeWelcome;
